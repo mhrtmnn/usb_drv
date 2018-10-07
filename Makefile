@@ -1,12 +1,12 @@
 -include cfg.local
 
-VERSION_TAG := \"$(shell git --git-dir=/home/marco/Documents/Projects/BBB/modules/usb_drv/.git rev-parse HEAD)\"
-EXTRA_CFLAGS += -D MOD_VER=$(VERSION_TAG) -Wall
-
 ARCHITECTURE := arm
 TOOLCHAIN := $(MY_TOOLCHAIN)
 COMPILER := $(MY_COMPILER)
 
+# MY_REPO_DIR needs to be exported
+VERSION_TAG := \"$(shell git --git-dir=$(MY_REPO_DIR) rev-parse HEAD)\"
+EXTRA_CFLAGS += -D MOD_VER=$(VERSION_TAG) -Wall
 PWD := $(shell pwd)
 
 modules:
@@ -21,6 +21,10 @@ deploy: modules
 .PHONY: modules clean
 
 obj-m += usb_drv.o
+
+usb_drv-y := usb_drv_core.o
+usb_drv-y += usb_drv_hid.o
+usb_drv-y += usb_drv_char.o
 
 #"make print-XXX" prints value of variable XXX
 print-% : ; @echo $* = $($*)

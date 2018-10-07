@@ -1,10 +1,10 @@
 # USB Driver
 
-Simple USB Driver for [PCM2704] USB DAC that explores:
+Toy USB Driver for [PCM2704] USB DAC that explores:
 - `USB` Drivers
 - `HID` Devices
 
-The driver is part of the _BeagleBone Black_ [buildroot project].
+The driver is part of my experimental _BeagleBone Black_ [buildroot project].
 
 
 [//]:  #  (Reference Links)
